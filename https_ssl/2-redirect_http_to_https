@@ -1,0 +1,8 @@
+listen web_servers
+    bind *:80
+    bind *:443 ssl crt /etc/haproxy/certs/bruceshimwa.tech.pem
+    http-request redirect scheme https code 301 unless { ssl_fc }
+    balance roundrobin
+    server web-01 52.55.211.3 check
+    server web-02  54.197.147.251 check
+    server lb-01 44.201.89.165 check

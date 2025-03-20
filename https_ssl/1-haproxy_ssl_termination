@@ -1,0 +1,6 @@
+listen web_servers
+    bind *:80
+    bind *:443 ssl crt /etc/haproxy/certs/clarisse.tech.pem
+    balance roundrobin
+    server web-01 52.55.211.3 check
+    server web-02 54.197.147.251 check
